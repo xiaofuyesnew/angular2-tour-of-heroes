@@ -6,3 +6,6 @@
 app.component.*
 app.module.*
 main.*
+!app.component.ts
+!app.module.ts
+!main.ts
