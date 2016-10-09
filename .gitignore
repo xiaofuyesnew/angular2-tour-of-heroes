@@ -3,9 +3,12 @@
 /typings/*
 
 #npm start
+hero-detail.component.*
 app.component.*
 app.module.*
 main.*
+
+!hero-detail.component.ts
 !app.component.ts
 !app.module.ts
 !main.ts
