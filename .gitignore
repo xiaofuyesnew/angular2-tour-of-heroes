@@ -3,14 +3,7 @@
 /typings/*
 
 #npm start
-hero.*
-hero-detail.component.*
-app.component.*
-app.module.*
-main.*
+app/*.js
+app/*.js.map
 
-!hero.ts
-!hero-detail.component.ts
-!app.component.ts
-!app.module.ts
-!main.ts
+!app/*.ts
