@@ -1,12 +1,22 @@
+import { Component, OnInit } from '@angular/core';
+
 import { Hero } from './hero';
-import { Component } from '@angular/core';
 import { HeroService } from './hero.service';
 
-
-
-//装饰器
 @Component({
     selector: 'my-app',
+    template: `
+        <h1>{{title}}</h1>
+        <h2>My Heroes</h2>
+        <ul class="heroes">
+            <li *ngFor="let hero of heroes"
+                [class.selected]="hero === selectedHero"
+                (click)="onSelect(hero)">
+                <span class="badge">{{hero.id}}</span>{{hero.name}}
+            </li>
+        </ul>
+        <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+    `,
     styles: [`
   .selected {
     background-color: #CFD8DC !important;
@@ -56,35 +66,27 @@ import { HeroService } from './hero.service';
     border-radius: 4px 0 0 4px;
   }
 `],
-    template: `
-        <h1>{{title}}</h1>
-        <h2>My Heroes</h2>
-        <ul class="heroes">
-            <li *ngFor="let hero of heroes"
-                [class.selected]="hero === selectedHero"
-                (click)="onSelect(hero)">
-                <span class="badge">{{hero.id}}</span>{{hero.name}}
-            </li>
-        </ul>
-        <my-hero-detail [hero]="selectedHero"></my-hero-detail>
-    `
+    providers: [HeroService]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
     title = 'Tour of Heroes';
-    selectedHero: Hero;
     heroes: Hero[];
+    selectedHero: Hero;
+
+    constructor(private heroService: HeroService) { }
+
+    getHeroes(): void {
+        this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+        //延迟2秒  用  getHeroesSlowly() 替换 getHeroes()
+    };
+
+    ngOnInit(): void {
+        this.getHeroes();
+    }
 
     onSelect(hero: Hero): void {
         this.selectedHero = hero;
     };
 
-    constructor(private heroService: HeroService) { };
-
-    providers: [HeroService];
-    
-    getHeroes(): void {
-        this.heroes = this.heroService.getHeroes();
-    };
-    
 }
