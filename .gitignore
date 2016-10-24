@@ -7,3 +7,6 @@ app/*.js
 app/*.js.map
 
 !app/*.ts
+
+#Mac
+.DS_Store
