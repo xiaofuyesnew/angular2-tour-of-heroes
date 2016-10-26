@@ -31,7 +31,8 @@ import { InMemoryDataService } from './in-memory-data.service';
         AppComponent,
         DashboardComponent,
         HeroDetailComponent,
-        HeroesComponent
+        HeroesComponent,
+        HeroSearchComponent
     ],
     providers: [ HeroService ],
     bootstrap: [ AppComponent ]
