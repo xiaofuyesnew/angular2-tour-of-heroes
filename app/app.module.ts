@@ -15,7 +15,7 @@ import { HeroSearchComponent } from './hero-search.component';
 import { AppRoutingModule } from './app-routing.module';
 
 //模拟web API
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
+import { InMemoryWebApiModule } from 'angular2-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 
 
